@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ximbole Bahiano - Remover</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="../styles/style.css">
+	</head>
+	<body>
+		<h1>Remover Produto!</h1>
+
+		<section id="formContainer">
+
+			<form class="row g-3">
+				<div class="col-md-6">
+					<label value="codBarra" class="form-label">codBarra: </label>
+					<input type="text" class="form-control" id="inputCodBarra" placeholder="Ex: 200-01">
+				</div>
+			</form>
+
+			<button class="btn btn-danger" id="btnOp" onclick="remover()">Remover</button>
+		</section>
+		<footer>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button class="btn btn-outline-warning btn-sm" onclick="redirecionar('att')" type="button">Atualizar</button>
+				<button class="btn btn-outline-danger btn-sm" onclick="redirecionar('adc')" type="button">Adicionar</button>
+				<button class="btn btn-outline-info btn-sm" onclick="redirecionar('bus')" type="button">Buscar</button>
+				<button class="btn btn-outline-success btn-sm" onclick="redirecionar('lis')" type="button">Listar</button>
+				<button class="btn btn-outline-primary btn-sm" onclick="redirecionar('hom')" type="button">Home</button>
+			</div>
+		</footer>
+	</body>
+	<script src="../js/redirect.js"></script>
+	<script src="../js/remove.js"></script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ximbole Bahiano - Atualizar Produto</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
+</head>
+<body>
+
+	<!-- Vai procurar o produto e trazê-lo -->
+	<section id="buscaContainer">
+		<h1>Atualizar Produto!</h1>
+		<form class="row g-3">
+			<div class="col-md-6">
+				<label value="codBarra" class="form-label">codBarra:</label>
+				<input type="text" class="form-control" id="inputCodBarra">
+			</div>
+		</form>
+
+		<button class="btn btn-primary" id="btnOp" onclick="busca()">Buscar</button>
+	</section>
+</body>
+<script src="../js/redirect.js"></script>
+<script src="../js/busca.js"></script>
+<script src="../js/att.js"></script>
+<script type="text/javascript">
+	function montarResposta(lista){
+		lista =JSON.parse(lista);
+
+		document.body.innerHTML = `
+		<section id="atualizaForm">
+			<h1>Atalizar dados!</h1>
+			<form class="row g-3">
+
+				<div class="col-md-6">
+					<label class="form-label">codBarra:</label>
+					<input type="text" class="form-control" id="inputCodBarra"  value= ${lista[0].codBarra} min=0>
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Nome do Produto:</label>
+					<input type="text" class="form-control" placeholder="Nome do Produto" id="inputNomeProd" value= ${lista[0].nome}>
+				</div>
+
+				<div class="col-12">
+					<label class="form-label">Fabricante:</label>
+					<input type="text" class="form-control" id="inputFabricanteProd" placeholder="Oliveirinha" value= ${lista[0].fabricante}>
+				</div>
+
+				<!--Rever questão de margin-->
+					<select id="categoriaProd" class="form-select">
+					  <option selected>Categoria do Produto</option>
+					  <option value="vestuario">vestuario</option>
+					  <option value="cmb">cama, mesa e banho</option>
+					  <option value="eletronicos">Eletronicos</option>
+					  <option value="Eletrodomesticos">Eletrodomesticos</option>
+					  <option value="lazer">Lazer</option>
+					</select>
+				<!--Rever questão de margin-->
+
+				<div class="col-md-6">
+					<label class="form-label">Tipo do Produto:</label>
+					<input type="text" class="form-control" id="inputProdTipo" value= ${lista[0].tipoProd}>
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Preço de Venda:</label>
+					<input type="text" class="form-control" id="inputPrecoProd" min="0" step="0.2" value= ${lista[0].precoVenda}>
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Quantidade em Estoque:</label>
+					<input type="number" class="form-control" id="inputQtdEstoque" min="0" value= ${lista[0].qtdEstoque}>
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Peso em gramas:</label>
+					<input type="text" class="form-control" id="inputPesoProd" min="0" step="0.3" value= ${lista[0].pesoGramas}>
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Data de Inclusão:</label>
+					<input type="date" class="form-control" id="inputDataInclusao" value= ${lista[0].dataInclusao}>
+				</div>
+			</form>
+
+			<button class="btn btn-primary" id="btnOp" onclick="atualizar()">Atualizar</button>
+		</section>
+		<footer>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button class="btn btn-outline-warning btn-sm" onclick="redirecionar('adc')" type="button">Adicionar</button>
+				<button class="btn btn-outline-danger btn-sm" onclick="redirecionar('rem')" type="button">Remover</button>
+				<button class="btn btn-outline-info btn-sm" onclick="redirecionar('bus')" type="button">Buscar</button>
+				<button class="btn btn-outline-success btn-sm" onclick="redirecionar('lis')" type="button">Listar</button>
+				<button class="btn btn-outline-primary btn-sm" onclick="redirecionar('hom')" type="button">Home</button>
+			</div>
+		</footer>
+		`
+	}
+</script>
+</html>

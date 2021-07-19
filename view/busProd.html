@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ximbole Bahiano - Buscar Produto</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="../styles/style.css">
+	</head>
+	<body>
+		
+		<h1>Buscar Produto!</h1>
+
+		<section id="formContainer">
+
+			<form class="row g-3">
+				<div class="col-md-6">
+					<label value="codBarra" class="form-label">codBarra:</label>
+					<input type="text" class="form-control" id="inputCodBarra">
+				</div>
+			</form>
+
+			<button class="btn btn-primary" id="btnOp" onclick="busca()">Buscar</button>
+		</section>
+		<section id="campoResposta">
+			<table id="tabelaResposta" class="table">
+		</section>
+
+	</body>
+	<footer>
+		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<button class="btn btn-outline-warning btn-sm" onclick="redirecionar('att')" type="button">Atualizar</button>
+			<button class="btn btn-outline-danger btn-sm" onclick="redirecionar('rem')" type="button">Remover</button>
+			<button class="btn btn-outline-info btn-sm" onclick="redirecionar('adc')" type="button">Adicionar</button>
+			<button class="btn btn-outline-success btn-sm" onclick="redirecionar('lis')" type="button">Listar</button>
+			<button class="btn btn-outline-primary btn-sm" onclick="redirecionar('hom')" type="button">Home</button>
+		</div>
+	</footer>
+	<script src="../js/redirect.js"></script>
+	<script src="../js/busca.js"></script>
+	<script type="text/javascript">
+		function montarResposta(lista){
+			lista =JSON.parse(lista);
+			let i = 0;
+			let tabelaResposta = document.getElementById("tabelaResposta");
+			let tabela = '';
+
+				tabela +=
+				` <thead>
+					<tr>
+					    <th scope="col">codBarra</th>
+					    <th scope="col">Nome</th>
+					    <th scope="col">Fabricante</th>
+					    <th scope="col">Categoria</th>
+					    <th scope="col">Tipo do Produto</th>
+					    <th scope="col">Preco de Venda</th>
+					    <th scope="col">Qtd em Estoque</th>
+					    <th scope="col">Peso em Gramas</th>
+					    <th scope="col">Data de Inclusao</th>
+					    <th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					   	<td>${lista[i].codBarra}</td>
+					   	<td>${lista[i].nome}</td>
+					   	<td>${lista[i].fabricante}</td>
+					   	<td>${lista[i].categoria}</td>
+					   	<td>${lista[i].tipoProd}</td>
+					   	<td>${lista[i].precoVenda}</td>
+					   	<td>${lista[i].qtdEstoque}</td>
+					   	<td>${lista[i].pesoGramas}</td>
+					   	<td>${lista[i].dataInclusao}</td>
+					   	<td>${lista[i].ATIVO}</td>
+					</tr>
+				</tbody>
+			`
+			tabelaResposta.innerHTML = tabela;
+		}
+	</script>
+</html>
